@@ -1,0 +1,17 @@
+# Build output
+.venv/
+build/
+dist/
+__pycache__/
+*.pyc
+PermitReader.exe
+
+# Local data: permit photos, results and your label settings
+input/
+output/
+labels.ini
+*.xlsx
+*.jpg
+*.jpeg
+*.png
+*.heic

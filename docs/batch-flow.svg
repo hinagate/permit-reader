@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1170 302" width="1170" height="302" role="img"><title>Batch flow: input folder, main process, parallel OCR workers, collect, Excel file</title><style>
+:root { --surface:#ffffff; --fg:#141c31; --muted:#5b6680; --line:#d2d8e4; --accent:#1e4fa6;
+  --gold:#b97f06; --gold-fill:#f6c84c; --teal:#23807a; --slate:#7d8aa6; --error:#b2372a;
+  --font-body:"Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; --font-mono:ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace; --font-cjk:"Microsoft JhengHei", "PingFang TC", "Noto Sans CJK TC", "Noto Sans TC", sans-serif; }
+@media (prefers-color-scheme: dark) {
+  :root { --surface:#151d30; --fg:#e5eaf4; --muted:#9ba7c0; --line:#2b3551; --accent:#88aaff;
+    --gold:#f2bf4a; --gold-fill:#f2bf4a; --teal:#5cc8bf; --slate:#8b97b2; --error:#f28a7a; }
+}
+text { font-family: var(--font-body); }
+.panel { fill: var(--surface); stroke: var(--line); }
+
+.n rect, .n polygon { fill: var(--surface); stroke: var(--fg); stroke-width: 1.2; }
+.n.hot rect, .n.hot polygon { stroke: var(--accent); stroke-width: 2; }
+.n.err rect { stroke: var(--error); stroke-dasharray: 5 3; }
+.n .t { font: 600 15px var(--font-body); fill: var(--fg); }
+.n .s { font: 400 12.5px var(--font-body); fill: var(--muted); }
+.n .m { font: 500 11px var(--font-mono); fill: var(--muted); }
+.n .tm { font: 600 14px var(--font-mono); fill: var(--fg); }
+.n.err .t { fill: var(--error); }
+.edge { stroke: var(--muted); stroke-width: 1.4; fill: none; }
+.edge.main { stroke: var(--accent); stroke-width: 2; }
+.edge.dash { stroke-dasharray: 5 4; }
+.elbl { font: 500 12px var(--font-mono); fill: var(--muted); }
+.elbl.main { fill: var(--accent); }
+.ah { fill: var(--muted); }
+.ah-main { fill: var(--accent); }
+.ann { font: 400 12px var(--font-mono); fill: var(--muted); }
+</style><rect class="panel" x="0.5" y="0.5" width="1169" height="301" rx="8"/><g transform="translate(20 20)">
+        <defs>
+          <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker>
+          <marker id="a1m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah-main" d="M0,0 L10,5 L0,10 z"/></marker>
+        </defs>
+        <g class="n"><rect x="1" y="96" width="140" height="70" rx="6"/><text class="tm" x="71" y="126" text-anchor="middle">input\</text><text class="s" x="71" y="146" text-anchor="middle">permit photos</text></g>
+        <line class="edge" x1="141" y1="131" x2="208" y2="131" marker-end="url(#a1)"/>
+        <text class="elbl" x="175" y="123" text-anchor="middle">paths</text>
+
+        <g class="n"><rect x="210" y="96" width="150" height="70" rx="6"/><text class="t" x="285" y="126" text-anchor="middle">Main process</text><text class="s" x="285" y="146" text-anchor="middle">find, sort, hand out</text></g>
+        <text class="ann" x="285" y="194" text-anchor="middle">workers = CPUs ÷ 2, max 8</text>
+        <text class="ann" x="285" y="211" text-anchor="middle">threads = CPUs ÷ workers, max 4</text>
+
+        <line class="edge main" x1="360" y1="131" x2="448" y2="42" marker-end="url(#a1m)"/>
+        <line class="edge main" x1="360" y1="131" x2="448" y2="131" marker-end="url(#a1m)"/>
+        <line class="edge main" x1="360" y1="131" x2="448" y2="220" marker-end="url(#a1m)"/>
+        <text class="elbl main" x="404" y="123" text-anchor="middle">photo path</text>
+
+        <g class="n hot"><rect x="450" y="11" width="230" height="58" rx="6"/><text class="t" x="466" y="35">Worker 1</text><text class="m" x="666" y="35" text-anchor="end">3 threads</text><text class="s" x="466" y="55">RapidOCR on ONNX Runtime</text></g>
+        <g class="n hot"><rect x="450" y="102" width="230" height="58" rx="6"/><text class="t" x="466" y="126">Worker 2</text><text class="m" x="666" y="126" text-anchor="end">3 threads</text><text class="s" x="466" y="146">RapidOCR on ONNX Runtime</text></g>
+        <g class="n hot"><rect x="450" y="193" width="230" height="58" rx="6"/><text class="t" x="466" y="217">Worker N</text><text class="m" x="666" y="217" text-anchor="end">3 threads</text><text class="s" x="466" y="237">RapidOCR on ONNX Runtime</text></g>
+
+        <line class="edge" x1="680" y1="42" x2="758" y2="127" marker-end="url(#a1)"/>
+        <line class="edge" x1="680" y1="131" x2="758" y2="131" marker-end="url(#a1)"/>
+        <line class="edge" x1="680" y1="220" x2="758" y2="135" marker-end="url(#a1)"/>
+        <text class="elbl" x="720" y="123" text-anchor="middle">results</text>
+
+        <g class="n"><rect x="760" y="96" width="120" height="70" rx="6"/><text class="t" x="820" y="126" text-anchor="middle">Collect</text><text class="s" x="820" y="146" text-anchor="middle">in file order</text></g>
+        <line class="edge" x1="880" y1="131" x2="948" y2="131" marker-end="url(#a1)"/>
+        <text class="elbl" x="914" y="123" text-anchor="middle">openpyxl</text>
+
+        <g class="n"><rect x="950" y="96" width="179" height="70" rx="6"/><text class="tm" x="1039" y="126" text-anchor="middle">output\</text><text class="m" x="1039" y="146" text-anchor="middle">Permit_Results_&lt;time&gt;.xlsx</text></g>
+      </g></svg>

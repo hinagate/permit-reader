@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 244" width="900" height="244" role="img"><title>Time for one photo after each speed change: 1.42, 1.13, 0.85, 0.66 seconds</title><style>
+:root { --surface:#ffffff; --fg:#141c31; --muted:#5b6680; --line:#d2d8e4; --accent:#1e4fa6;
+  --gold:#b97f06; --gold-fill:#f6c84c; --teal:#23807a; --slate:#7d8aa6; --error:#b2372a;
+  --font-body:"Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; --font-mono:ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace; --font-cjk:"Microsoft JhengHei", "PingFang TC", "Noto Sans CJK TC", "Noto Sans TC", sans-serif; }
+@media (prefers-color-scheme: dark) {
+  :root { --surface:#151d30; --fg:#e5eaf4; --muted:#9ba7c0; --line:#2b3551; --accent:#88aaff;
+    --gold:#f2bf4a; --gold-fill:#f2bf4a; --teal:#5cc8bf; --slate:#8b97b2; --error:#f28a7a; }
+}
+text { font-family: var(--font-body); }
+.panel { fill: var(--surface); stroke: var(--line); }
+
+.lbl { font: 400 13.5px var(--font-body); fill: var(--fg); }
+.sub { font: 400 11.5px var(--font-body); fill: var(--muted); }
+.bar { fill: var(--slate); } .bar.final { fill: var(--accent); }
+.val { font: 600 12px var(--font-mono); fill: var(--surface); }
+.tick { font: 400 11px var(--font-mono); fill: var(--muted); }
+.axis { stroke: var(--line); }
+</style><rect class="panel" x="0.5" y="0.5" width="899" height="243" rx="8"/><g transform="translate(20 20)"><text class="lbl" x="0" y="18">RapidOCR defaults</text><rect class="bar" x="260" y="2" width="568" height="26" rx="3"/><text class="val" x="820" y="19" text-anchor="end">1.42 s</text><text class="lbl" x="0" y="58">Angle classifier off</text><text class="sub" x="0" y="74">rotation handled per photo instead</text><rect class="bar" x="260" y="48" width="452" height="26" rx="3"/><text class="val" x="704" y="65" text-anchor="end">1.13 s</text><text class="lbl" x="0" y="104">Detect at 1280 px</text><text class="sub" x="0" y="120">fine pass at 2000 px only if needed</text><rect class="bar" x="260" y="94" width="340" height="26" rx="3"/><text class="val" x="592" y="111" text-anchor="end">0.85 s</text><text class="lbl" x="0" y="150">4 threads instead of 28</text><text class="sub" x="0" y="166">threads stop competing</text><rect class="bar final" x="260" y="140" width="264" height="26" rx="3"/><text class="val" x="516" y="157" text-anchor="end">0.66 s</text><line class="axis" x1="260" y1="186" x2="860.0" y2="186"/><text class="tick" x="260" y="201" text-anchor="start">0</text><text class="tick" x="460" y="201" text-anchor="middle">0.5</text><text class="tick" x="660" y="201" text-anchor="middle">1</text><text class="tick" x="860" y="201" text-anchor="end">1.5 s</text></g></svg>

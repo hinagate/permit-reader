@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1142 332" width="1142" height="332" role="img"><title>Per-photo flow: load, fast pass, parse, rotate or fine pass if needed, set status</title><style>
+:root { --surface:#ffffff; --fg:#141c31; --muted:#5b6680; --line:#d2d8e4; --accent:#1e4fa6;
+  --gold:#b97f06; --gold-fill:#f6c84c; --teal:#23807a; --slate:#7d8aa6; --error:#b2372a;
+  --font-body:"Segoe UI", -apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif; --font-mono:ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace; --font-cjk:"Microsoft JhengHei", "PingFang TC", "Noto Sans CJK TC", "Noto Sans TC", sans-serif; }
+@media (prefers-color-scheme: dark) {
+  :root { --surface:#151d30; --fg:#e5eaf4; --muted:#9ba7c0; --line:#2b3551; --accent:#88aaff;
+    --gold:#f2bf4a; --gold-fill:#f2bf4a; --teal:#5cc8bf; --slate:#8b97b2; --error:#f28a7a; }
+}
+text { font-family: var(--font-body); }
+.panel { fill: var(--surface); stroke: var(--line); }
+
+.n rect, .n polygon { fill: var(--surface); stroke: var(--fg); stroke-width: 1.2; }
+.n.hot rect, .n.hot polygon { stroke: var(--accent); stroke-width: 2; }
+.n.err rect { stroke: var(--error); stroke-dasharray: 5 3; }
+.n .t { font: 600 15px var(--font-body); fill: var(--fg); }
+.n .s { font: 400 12.5px var(--font-body); fill: var(--muted); }
+.n .m { font: 500 11px var(--font-mono); fill: var(--muted); }
+.n .tm { font: 600 14px var(--font-mono); fill: var(--fg); }
+.n.err .t { fill: var(--error); }
+.edge { stroke: var(--muted); stroke-width: 1.4; fill: none; }
+.edge.main { stroke: var(--accent); stroke-width: 2; }
+.edge.dash { stroke-dasharray: 5 4; }
+.elbl { font: 500 12px var(--font-mono); fill: var(--muted); }
+.elbl.main { fill: var(--accent); }
+.ah { fill: var(--muted); }
+.ah-main { fill: var(--accent); }
+.ann { font: 400 12px var(--font-mono); fill: var(--muted); }
+</style><rect class="panel" x="0.5" y="0.5" width="1141" height="331" rx="8"/><g transform="translate(20 20)">
+        <defs>
+          <marker id="b1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah" d="M0,0 L10,5 L0,10 z"/></marker>
+          <marker id="b1m" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="ah-main" d="M0,0 L10,5 L0,10 z"/></marker>
+        </defs>
+        <g class="n hot"><rect x="1" y="55" width="150" height="70" rx="6"/><text class="t" x="76" y="85" text-anchor="middle">Load photo</text><text class="s" x="76" y="105" text-anchor="middle">EXIF turn, ≤ 2000 px</text></g>
+        <line class="edge main" x1="151" y1="90" x2="208" y2="90" marker-end="url(#b1m)"/>
+
+        <g class="n hot"><rect x="210" y="55" width="160" height="70" rx="6"/><text class="t" x="290" y="85" text-anchor="middle">Fast pass</text><text class="s" x="290" y="105" text-anchor="middle">detect at 1280 px, read</text></g>
+        <line class="edge main" x1="370" y1="90" x2="418" y2="90" marker-end="url(#b1m)"/>
+
+        <g class="n hot"><rect x="420" y="55" width="140" height="70" rx="6"/><text class="t" x="490" y="85" text-anchor="middle">Parse layout</text><text class="s" x="490" y="105" text-anchor="middle">labels → fields</text></g>
+        <line class="edge main" x1="560" y1="90" x2="600" y2="90" marker-end="url(#b1m)"/>
+
+        <g class="n hot"><polygon points="602,90 660,46 718,90 660,134"/><text class="t" x="660" y="95" text-anchor="middle">Upright?</text></g>
+        <line class="edge main" x1="718" y1="90" x2="770" y2="90" marker-end="url(#b1m)"/>
+        <text class="elbl main" x="744" y="82" text-anchor="middle">yes</text>
+
+        <g class="n hot"><polygon points="772,90 830,46 888,90 830,134"/><text class="t" x="830" y="95" text-anchor="middle">All fields?</text></g>
+        <line class="edge main" x1="888" y1="90" x2="948" y2="90" marker-end="url(#b1m)"/>
+        <text class="elbl main" x="918" y="82" text-anchor="middle">yes</text>
+
+        <g class="n hot"><rect x="950" y="55" width="150" height="70" rx="6"/><text class="t" x="1025" y="85" text-anchor="middle">Set status</text><text class="s" x="1025" y="105" text-anchor="middle">OK, or CHECK + note</text></g>
+
+        <line class="edge" x1="660" y1="134" x2="660" y2="198" marker-end="url(#b1)"/>
+        <text class="elbl" x="670" y="172">no</text>
+        <g class="n"><rect x="585" y="200" width="150" height="70" rx="6"/><text class="t" x="660" y="230" text-anchor="middle">Rotate, retry</text><text class="s" x="660" y="250" text-anchor="middle">270°, 90° or 180°</text></g>
+        <polyline class="edge" points="585,235 290,235 290,127" marker-end="url(#b1)"/>
+        <text class="elbl" x="437" y="227" text-anchor="middle">up to 3 more passes</text>
+
+        <line class="edge" x1="830" y1="134" x2="830" y2="198" marker-end="url(#b1)"/>
+        <text class="elbl" x="840" y="172">no</text>
+        <g class="n"><rect x="755" y="200" width="150" height="70" rx="6"/><text class="t" x="830" y="230" text-anchor="middle">Fine pass</text><text class="s" x="830" y="250" text-anchor="middle">detect at 2000 px</text></g>
+        <polyline class="edge" points="905,235 1025,235 1025,127" marker-end="url(#b1)"/>
+        <text class="elbl" x="965" y="227" text-anchor="middle">keep the better</text>
+
+        <line class="edge dash" x1="76" y1="125" x2="76" y2="198" marker-end="url(#b1)"/>
+        <text class="elbl" x="86" y="172">won't open</text>
+        <g class="n err"><rect x="1" y="200" width="150" height="70" rx="6"/><text class="t" x="76" y="230" text-anchor="middle">ERROR row</text><text class="s" x="76" y="250" text-anchor="middle">batch carries on</text></g>
+      </g></svg>
